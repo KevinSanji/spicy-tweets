@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: ''
+    }
+  }
+
+  searchUser () {
+    console.log('hello');
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='app'>
+        <h1>Spicy Tweets</h1>
+        <input type='text' onChange={event => this.setState({user: event.target.value})} placeholder='Search User'/>
+        <button onClick={this.searchUser}>Search</button>
+        <h2>{this.state.user}'s Spiciest Tweets</h2>
+        <div className='tweet-container'>
+          <ul>
+            <li className='tweet'></li>
+          </ul>
+        </div>
       </div>
-    );
+    )
   }
+
 }
 
 export default App;
